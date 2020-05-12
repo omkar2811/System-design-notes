@@ -3,11 +3,11 @@ System Design of Popular Applications and Services
 
 The following document consists of the system design and architecture of the highly scaled and efficiently managed systems which provide services to the millions of people in the form of applications and softwares to the people in  various continents all over the world. This study would help us understand  the underlying architecture and help us gain knowledge in the field of system design.
 
-1. Netflix System Design
+# 1. Netflix System Design
 
 Netflix system design is one of the most impressive system design. Netflix caters to billions of people globally th online content to stream without interuptions in their service.
 
-    Some impressive Netflix statistics for 2017.
+# Some impressive Netflix statistics for 2017.
 
 Netflix has more than 110 million subscribers and increasing each passing day.
 Netflix operates in more than 200 countries. 
