@@ -7,7 +7,7 @@ The following document consists of the system design and architecture of the hig
 
 Netflix system design is one of the most impressive system design. Netflix caters to billions of people globally th online content to stream without interuptions in their service.
 
-# Some impressive Netflix statistics for 2017.
+**Some impressive Netflix statistics for 2017.**
 
 Netflix has more than 110 million subscribers and increasing each passing day.
 Netflix operates in more than 200 countries. 
