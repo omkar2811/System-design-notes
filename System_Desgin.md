@@ -5,7 +5,7 @@ The following document consists of the system design and architecture of the hig
 
 # 1. Netflix System Design
 
-Netflix system design is one of the most impressive system design. Netflix caters to billions of people globally th online content to stream without interuptions in their service.
+Netflix system design is one of the most impressive system design. Netflix caters to billions of people globally online video content in the form of movies,web-series,etc to stream without any interuptions and provide a great user experience to all the people.
 
 **Some impressive Netflix statistics for 2017.**
 
@@ -37,5 +37,24 @@ Everything that happens before you hit play happens in the backend, which runs i
 
 Everything that happens after you hit play is handled by Open Connect. Open Connect is Netflix’s custom global content delivery network (CDN). Open Connect stores Netflix video in different locations throughout the world. When you press play the video streams from Open Connect, into your device, and is displayed by the client. Don’t worry; we’ll talk more about what a CDN is a little later.
 
-USP of NEtflix is Relaibility
+- **USP of Netflix is Relaibility**
+Netflix is so reliable now because they’ve taken extraordinary steps to make their service reliable. 
+
+Netflix operates out of three AWS regions: one in North Virginia, one in Portland Oregon, and one in Dublin Ireland. Within each region, Netflix operates in three different availability zones.
+
+Netflix has said there are no plans to operate out of more regions. It’s very expensive and complicated to add new regions. Most companies operate out of just one region, let alone two or three. 
+
+The advantage of having three regions is that any one region can fail, and the other regions will step in handle all the members in the failed region. When a region fails, Netflix calls this evacuating a region.
+
+**Netflix runs monthly tests. Every month Netflix causes a region to fail on purpose just to make sure its system can handle region level failures. A region can be evacuated in six minutes.**
+
+# What Happens in AWS Before you Press Play?
+
+Anything that doesn’t involve serving video is handled in AWS. 
+
+This includes scalable computing, scalable storage, business logic, scalable distributed databases, big data processing and analytics, recommendations, transcoding, and hundreds of other functions. 
+
+**Scalable computing and scalable storage.**
+
+Scalable computing is EC2 and scalable storage is S3. Nothing new for us here. 
 
