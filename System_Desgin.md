@@ -20,16 +20,16 @@ Netflix accounts for over 37% of peak internet traffic in the United States
 Main System Design of Netflix
 Netflix operates in two clouds: 
 
-**AWS and Open Connect.
+**AWS and Open Connect.**
 
 Both clouds must work together seamlessly to deliver endless hours of customer-pleasing video.
 
 The three parts of Netflix:
 
 
-**-client 
-**-backend
-**-content delivery network (CDN).
+-client 
+-backend
+-content delivery network (CDN).
 
 he client is the user interface on any device used to browse and play Netflix videos. It could be an app on your iPhone, a website on your desktop computer, or even an app on your Smart TV. Netflix controls each and every client for each and every device. 
 
