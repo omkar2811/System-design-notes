@@ -9,13 +9,13 @@ Netflix system design is one of the most impressive system design. Netflix cater
 
 **Some impressive Netflix statistics for 2017.**
 
-Netflix has more than 110 million subscribers and increasing each passing day.
-Netflix operates in more than 200 countries. 
-Netflix has nearly $3 billion in revenue per quarter.
-Netflix adds more than 5 million new subscribers per quarter.
-Netflix plays more than 1 billion hours of video each week. As a comparison, YouTube streams 1 billion hours of video every day while  Facebook streams 110 million hours of video every day.
-Netflix played 250 million hours of video on a single day in 2017.
-Netflix accounts for over 37% of peak internet traffic in the United States
+- Netflix has more than 110 million subscribers and increasing each passing day.
+- Netflix operates in more than 200 countries. 
+- Netflix has nearly $3 billion in revenue per quarter.
+- Netflix adds more than 5 million new subscribers per quarter.
+- Netflix plays more than 1 billion hours of video each week. As a comparison, YouTube streams 1 billion hours of video every day while  Facebook streams 110 million hours of video every day.
+- Netflix played 250 million hours of video on a single day in 2017.
+- Netflix accounts for over 37% of peak internet traffic in the United States
 
 Main System Design of Netflix
 Netflix operates in two clouds: 
@@ -27,9 +27,9 @@ Both clouds must work together seamlessly to deliver endless hours of customer-p
 The three parts of Netflix:
 
 
--client 
--backend
--content delivery network (CDN).
+- client 
+- backend
+- content delivery network (CDN).
 
 he client is the user interface on any device used to browse and play Netflix videos. It could be an app on your iPhone, a website on your desktop computer, or even an app on your Smart TV. Netflix controls each and every client for each and every device. 
 
