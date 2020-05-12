@@ -18,7 +18,22 @@ Netflix played 250 million hours of video on a single day in 2017.
 Netflix accounts for over 37% of peak internet traffic in the United States
 
 Main System Design of Netflix
-Netflix operates in two clouds: AWS and Open Connect.
+Netflix operates in two clouds: 
+
+**AWS and Open Connect.
 
 Both clouds must work together seamlessly to deliver endless hours of customer-pleasing video.
+
+The three parts of Netflix:
+
+
+**-client 
+**-backend
+**-content delivery network (CDN).
+
+he client is the user interface on any device used to browse and play Netflix videos. It could be an app on your iPhone, a website on your desktop computer, or even an app on your Smart TV. Netflix controls each and every client for each and every device. 
+
+Everything that happens before you hit play happens in the backend, which runs in AWS. That includes things like preparing all new incoming video and handling requests from all apps, websites, TVs, and other devices.
+
+Everything that happens after you hit play is handled by Open Connect. Open Connect is Netflix’s custom global content delivery network (CDN). Open Connect stores Netflix video in different locations throughout the world. When you press play the video streams from Open Connect, into your device, and is displayed by the client. Don’t worry; we’ll talk more about what a CDN is a little later.
 
