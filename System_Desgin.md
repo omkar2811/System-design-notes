@@ -37,7 +37,8 @@ Everything that happens before you hit play happens in the backend, which runs i
 
 Everything that happens after you hit play is handled by Open Connect. Open Connect is Netflix’s custom global content delivery network (CDN). Open Connect stores Netflix video in different locations throughout the world. When you press play the video streams from Open Connect, into your device, and is displayed by the client. Don’t worry; we’ll talk more about what a CDN is a little later.
 
-- **USP of Netflix is Relaibility**
+**USP of Netflix is Relaibility.**
+
 Netflix is so reliable now because they’ve taken extraordinary steps to make their service reliable. 
 
 Netflix operates out of three AWS regions: one in North Virginia, one in Portland Oregon, and one in Dublin Ireland. Within each region, Netflix operates in three different availability zones.
@@ -56,5 +57,30 @@ This includes scalable computing, scalable storage, business logic, scalable dis
 
 **Scalable computing and scalable storage.**
 
-Scalable computing is EC2 and scalable storage is S3. Nothing new for us here. 
+Scalable computing is EC2 and scalable storage is S3.
+
+**Scalable distributed database.** 
+
+Netflix uses both DynamoDB and Cassandra for their distributed databases.
+
+**Big data processing and analytics.**
+
+Big data simply means there’s a lot of data. Netflix collects a lot of information. Netflix knows what everyone has watched when they watched it and where they were when they watched. Netflix knows which videos members have looked at but decided not to watch. Netflix knows how many times each video has been watched…and a lot more. 
+
+**Netflix personalizes artwork just for you.**
+
+When browsing around looking for something to watch on Netflix, have you noticed there’s always an image displayed for each video? That’s called the header image.
+
+The header image is meant to intrigue you, to draw you into selecting a video. The idea is the more compelling the header image, the more likely you are to watch a video. And the more videos you watch, the less likely you are to unsubscribe from Netflix.
+
+Let’s say one of your recommendations is the movie Good Will Hunting. Netflix must choose a header image to show you. The goal is to show an image that lets you know about a movie you’ll probably be interested in. Which image should Netflix show you? 
+
+If you like comedies, Netflix will show you an image featuring Robin Williams. If you prefer romantic movies, Netflix will show you an image Matt Damon and Minnie Driver poised for a kiss.
+
+**Recommendations.**
+
+That’s part of the big data processing and analytics we just talked about. Netflix looks at its data and predicts what you’ll like. In fact, everything you see see on a Netflix screen was chosen specifically for you using machine learning.
+
+
+
 
