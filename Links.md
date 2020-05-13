@@ -1,6 +1,6 @@
 # 1.Netflix System Design
 
-- [Cassandra Documantation](https://cassandra.apache.org/doc/latest/)
+- [Cassandra Documentation](https://cassandra.apache.org/doc/latest/)
 
 - [Aws EC2](https://docs.aws.amazon.com/ec2/?id=docs_gateway)
 
