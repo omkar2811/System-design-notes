@@ -81,6 +81,62 @@ If you like comedies, Netflix will show you an image featuring Robin Williams. I
 
 That’s part of the big data processing and analytics we just talked about. Netflix looks at its data and predicts what you’ll like. In fact, everything you see see on a Netflix screen was chosen specifically for you using machine learning.
 
+# 2. URL Shortner
+
+URL shortening is used to create shorter aliases for long URLs. 
+URL shortening is used for optimizing links across devices, tracking individual links to analyze audience and campaign performance, and hiding affiliated original URLs.(Eg : tinyurl.com)
+
+**Capacity Estimation and Constraints**
+
+Traffic Estimates : 
+  Assuming, we will have 500M new URL shortenings per month, with 100:1 read/write ratio.
+  New URLs shortenings per second = 500M/(30 * 24 * 60 *60) = 200URLs/sec.
+  Redirections / sec = 100 * 200 URLs/sec = 20K/sec
+Storage Estimates :
+  Assuming 5 years span .
+  Total objects to store = 500M * 5yr * 12months = 30B.
+  Assuming 500 bytes per object
+  Total Storage = 30B * 500 = 15TB
+Bandwidth Estimates : 
+  For write requests : 200 * 500 = 100KB/s
+  For read requests : 20K * 500 = 10MB/s
+Memory Estimates :
+  Will follow 20-20 rule.
+  Requests per day = 20K * 60 * 60 *24 = 1.7B
+  To Cache 20% of these we need 0.2 * 1.7B * 500 = 170GB.
+
+**System API's**
+createURL(api_dev_key, original_url, custom_alias=None, user_name=None, expire_date=None)
+deleteURL(api_dev_key, url_key)
+To prevent abuse :  Each api_dev_key can be limited to a certain number of URL creations and redirections per some time period.
+
+**Database Schema**
+URL :  Hash,OriginalURL,CreationDate,ExpirationDate,UserID
+User : UserID,Name,...
+
+**Basic System Design and Algorithm**
+
+1.Encoding Actual URL : 
+  In this we will compute an unique hash of the url and then encoded for displaying.
+  If Base64 encoding is used with 6 letter key,we will have 64^7=68.7B unique .This will suffice.
+  But the problems with this approach are :
+    1. If multiple users enter the same URL, they can get the same shortened URL, which is not acceptable.
+    2. What if parts of the URL are URL-encoded?
+
+2.Generating keys offline : 
+  We can have a standalone Key Generation Service (KGS) that generates random six-letter strings beforehand and stores them in a database (let’s call it key-DB). Whenever we want to shorten a URL, we will just take one of the already-generated keys and use it.
+  Can concurrency cause problems?Servers can use KGS to read/mark keys in the database. KGS can use two tables to store keys: one for keys that are not used yet, and one for all the used keys. As soon as KGS gives keys to one of the servers, it can move them to the used keys table. KGS can always keep some keys in memory so that it can quickly provide them whenever a server needs them.
+  we can have a standby replica of KGS to avoid SPF.
+  
+**Data Partitioning and Replication**
+  We can use consistent hashing.
 
 
+We can add a Load balancing layer at three places in our system:
 
+Between Clients and Application servers
+Between Application Servers and database servers
+Between Application Servers and Cache servers
+
+
+A separate Cleanup service can run periodically to remove expired links from our storage and cache. This service should be very lightweight and can be scheduled to run only when the user traffic is expected to be low.
