@@ -140,3 +140,46 @@ Between Application Servers and Cache servers
 
 
 A separate Cleanup service can run periodically to remove expired links from our storage and cache. This service should be very lightweight and can be scheduled to run only when the user traffic is expected to be low.
+
+# 3. Instagram
+
+Instagram is the most popular media sharing application. It is the top choice for businesses to market their products. There are many features which make this social media platform attractive.
+
+**Statistics**
+- More than 1 billion active users
+- Every day, Instagram has about 95 million photos and videos shared
+- 500 million daily Instagram Stories users
+- Instagram clocks up 3.5 billion likes every day
+- 2 million advertisers use Instagram on a monthly basis
+
+The statistics show that Instagram faces huge amount of traffic everyday. With posts, stories, videos how does it keep up with the traffic? 
+
+Usage of different databases for, reliable cloud services makes it possible
+
+The below diagram shows the architecture of Instagram
+
+![](images/Instagram_arch.jpg)
+
+
+The server-side code is powered by Django Python. All the web & async servers run in a distributed environment & are stateless. The backend uses various storage technologies such as Cassandra, PostgreSQL, Memcache, Redis to serve personalized content to the users. Everytime a user uploads a photo, the post is stored in byte form in database. This process happens synchronously. 
+
+Instagram previously used AWS services most of which has been moved to Facebook’s infrastructure. It has expanded its infrastructure from one to three data centers to scale the infrastructure geographically so that it can provide reliable service.
+
+**News Feed**
+
+The main component of Instagram is its news feed. News feed is personalised for each user. It is very important for the feed to load quickly. To avoid delay in loading feed it is pre-computed. The feed is pre-computed for the users by fetching data after the uploads done by users. Data fetching service is different for celebrity users and non-celebrity users.
+
+**Different approaches for fetching news feed contents for users**
+
+1. Pull: Clients can pull the News Feed contents from the server on a regular basis or manually whenever they need it. Possible problems with this approach are a) New data might not be shown to the users until clients issue a pull request b) Most of the time pull requests will result in an empty response if there is no new data.
+
+2. Push: Servers can push new data to the users as soon as it is available. To efficiently manage this, users have to maintain a Long Poll request (the server holds the request open and waits for response information to become available) with the server for receiving the updates. A possible problem with this approach is, a user who follows a lot of people or a celebrity user who has millions of followers; in this case, the server has to push updates quite frequently.
+
+3. Hybrid: We can adopt a hybrid approach. We can move all the users who have a high number of follows to a pull-based model and only push data to those users who have a few hundred (or thousand) follows. Another approach could be that the server pushes updates to all the users not more than a certain frequency, letting users with a lot of follows/updates to regularly pull data.
+
+**Other Features**
+
+Instagram also has features like likes, comments. This data is stored in a graph-based database, Neo4j. The graph based structure provides fast and easy access to likes and comments. It makes it easy to compute the number of likes and comments and to retrieve them.
+
+Users get their personalised feed with the help of Deep Neural Networks. Features like Likes, Comments, Hashtags in the media that users like. The content that the user might like is added to their news feed and such posts are shown more frequently to the user.
+
